@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETL Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .section-title {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="text-center mb-4">ETL Configuration</h1>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <div class="row">
+                    <!-- Source Database Configuration -->
+                    <div class="col-md-6">
+                        <h3 class="section-title">Source Database</h3>
+                        <div class="mb-3">
+                            <label for="source_host" class="form-label">Host</label>
+                            <input type="text" class="form-control" id="source_host" name="source_host" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="source_port" class="form-label">Port</label>
+                            <input type="text" class="form-control" id="source_port" name="source_port" value="5432" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="source_user" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="source_user" name="source_user" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="source_password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="source_password" name="source_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="source_database" class="form-label">Database Name</label>
+                            <input type="text" class="form-control" id="source_database" name="source_database" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="source_table" class="form-label">Source Table</label>
+                            <input type="text" class="form-control" id="source_table" name="source_table" required>
+                        </div>
+                    </div>
+
+                    <!-- Target Database Configuration -->
+                    <div class="col-md-6">
+                        <h3 class="section-title">Target Database</h3>
+                        <div class="mb-3">
+                            <label for="target_host" class="form-label">Host</label>
+                            <input type="text" class="form-control" id="target_host" name="target_host" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="target_port" class="form-label">Port</label>
+                            <input type="text" class="form-control" id="target_port" name="target_port" value="5432" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="target_user" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="target_user" name="target_user" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="target_password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="target_password" name="target_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="target_database" class="form-label">Database Name</label>
+                            <input type="text" class="form-control" id="target_database" name="target_database" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="target_table" class="form-label">Target Table</label>
+                            <input type="text" class="form-control" id="target_table" name="target_table" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Save Configuration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

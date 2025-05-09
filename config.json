@@ -1,0 +1,9 @@
+{
+  "transformations": [
+    {"name": "dropna", "params": {"subset": null}},
+    {"name": "lowercase_column", "params": {"column": "col1"}, "condition": "df['col1'].dtype == 'object'"},
+    {"name": "rename_column", "params": {"old_name": "col1", "new_name": "column_one"}},
+    {"name": "fillna", "params": {"column": "col2", "value": 0}, "condition": "df['col2'].isnull().any()"},
+    {"name": "filter_rows", "params": {"query": "col2 > 0"}}
+  ]
+} 
